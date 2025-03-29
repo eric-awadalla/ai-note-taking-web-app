@@ -4,6 +4,7 @@ import Link from "next/link";
 import React from "react";
 import { Button } from "./ui/button";
 import DarkModeToggle from "./DarkModeToggle";
+import LogoutButton from "./LogoutButton";
 
 function Header() {
   const user = null;
@@ -25,7 +26,7 @@ function Header() {
       </Link>
       <div className="flex gap-4 ">
         {user ? (
-          "Logout"
+          <LogoutButton />
         ) : (
           <>
             <Button className="hidden sm:block" asChild>
