@@ -32,11 +32,22 @@ export const logoutUserAction = async () => {
   }
 };
 
-export const signUpUserAction = async (email: string, password: string) => {
+export const signUpUserAction = async (
+  email: string,
+  password: string,
+  firstName: string,
+  lastName: string
+) => {
   try {
     const { auth } = await createClient();
 
-    const { data, error } = await auth.signUp({ email, password });
+    const { data, error } = await auth.signUp({
+      email,
+      password,
+      options: {
+        data: { firstName, lastName },
+      },
+    });
 
     if (error) throw error;
 
@@ -49,6 +60,8 @@ export const signUpUserAction = async (email: string, password: string) => {
       data: {
         id: userId,
         email,
+        firstName,
+        lastName,
       },
     });
 

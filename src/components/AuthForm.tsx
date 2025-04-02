@@ -26,6 +26,8 @@ function AuthForm({ type }: props) {
     startTransition(async () => {
       const email = formDate.get("email") as string;
       const password = formDate.get("password") as string;
+      const firstName = formDate.get("firstName") as string;
+      const lastName = formDate.get("lastName") as string;
 
       let errorMessage;
       let title;
@@ -36,7 +38,9 @@ function AuthForm({ type }: props) {
         title = "Loggged In";
         description = "You have been successfully logged in";
       } else {
-        errorMessage = (await signUpUserAction(email, password)).errorMessage;
+        errorMessage = (
+          await signUpUserAction(email, password, firstName, lastName)
+        ).errorMessage;
         title = "Signed up";
         description = "Check your email for a confirmation link";
       }
@@ -58,6 +62,32 @@ function AuthForm({ type }: props) {
   return (
     <form action={handleSubmit}>
       <CardContent className="grid w-full items-center gap-4">
+        {!isLoginForm && (
+          <div className="flex flex-row gap-3 w-full max-sm:flex-col">
+            <div className="flex flex-col space-y-1.5 grow">
+              <Label htmlFor="firstName">First Name</Label>
+              <Input
+                type="text"
+                id="firstName"
+                name="firstName"
+                placeholder="Enter your First Name"
+                required
+                disabled={isPending}
+              />
+            </div>
+            <div className="flex flex-col space-y-1.5 grow">
+              <Label htmlFor="lastName">Last Name</Label>
+              <Input
+                type="text"
+                id="lastName"
+                name="lastName"
+                placeholder="Enter your Last Name"
+                required
+                disabled={isPending}
+              />
+            </div>
+          </div>
+        )}
         <div className="flex flex-col space-y-1.5">
           <Label htmlFor="email">Email</Label>
           <Input
