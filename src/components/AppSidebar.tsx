@@ -28,10 +28,9 @@ async function AppSidebar() {
 
   return (
     <Sidebar>
-      {/* <SidebarHeader /> */}
       <SidebarContent className="custom-scrollbar">
         <SidebarGroup>
-          <SidebarGroupLabel className="mb-2 mt-2 text-lg">
+          <SidebarGroupLabel className="mb-2 mt-4 text-lg">
             {user ? (
               `Welcome, ${user.user_metadata.firstName}! Here are your notes`
             ) : (
