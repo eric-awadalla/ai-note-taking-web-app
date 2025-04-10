@@ -33,7 +33,7 @@ function LogoutButton() {
     <Button
       onClick={handleLogOut}
       variant="outline"
-      className="w-24"
+      className="w-24 cursor-pointer"
       disabled={loading}
     >
       {loading ? <Loader2 className="animate-spin" /> : "Log Out"}

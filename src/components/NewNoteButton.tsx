@@ -32,7 +32,7 @@ function NewNoteButton({ user }: Props) {
     <Button
       onClick={handleClickNewNoteButton}
       variant="secondary"
-      className="w-24"
+      className="w-24 cursor-pointer"
       disabled={loading}
     >
       {loading ? <Loader2 className="animate-spin" /> : "New Note"}
